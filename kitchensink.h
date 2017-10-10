@@ -8,8 +8,7 @@
 #include "temperature.h"
 #include "timer0.h"
 #include "timer1.h"
-
-
+#include "usart0.h"
 
 void KS_init(void);
 

@@ -23,6 +23,8 @@ void KS_init() {
 	keypad_init();
 	fet_init();
 
+	usart0_init(57600, 0);
+
 	// Enable LED output
 	DDRJ |= _BV(DDJ7);
 
