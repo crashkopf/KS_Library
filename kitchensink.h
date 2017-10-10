@@ -1,3 +1,5 @@
+#include <avr/io.h>
+
 #include "adc.h"
 #include "fet.h"
 #include "display.h"
@@ -7,9 +9,7 @@
 #include "timer0.h"
 #include "timer1.h"
 
-#define display(string, ...) fprintf_P(&display, PSTR(string), ##__VA_ARGS__)
 
-extern FILE display;
 
 void KS_init(void);
 
