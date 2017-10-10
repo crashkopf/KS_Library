@@ -30,6 +30,7 @@ AVR-CFLAGS = $(AVR-COMMON) \
 BOARDOBJS = \
 	$(BUILDDIR)/adc.o \
 	$(BUILDDIR)/debug.o \
+	$(BUILDDIR)/dallas_one_wire.o \
 	$(BUILDDIR)/display.o \
 	$(BUILDDIR)/fet.o \
 	$(BUILDDIR)/hd44780.o \
