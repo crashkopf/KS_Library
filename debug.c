@@ -1,14 +1,9 @@
 
-#include <avr/io.h>
-
 #include <stdio.h>
-#include <string.h>
+#include <avr/pgmspace.h>
 
 #include "debug.h"
 
-#define BUFSIZE (96)
+#include "usart0.h"
 
-void _debug(const char * fmt, ...) {
-	(void) fmt;
-	return;
-}
+FILE debug = FDEV_SETUP_STREAM(usart0_putc, usart0_getc, _FDEV_SETUP_RW);

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <avr/pgmspace.h>
 
-#define debug(fmt, ...) _debug(PSTR(fmt), ##__VA_ARGS__)
+#define debug(string, ...) fprintf_P(&debug, PSTR(string), ##__VA_ARGS__)
 
-void _debug(const char *, ...);
+extern FILE debug;

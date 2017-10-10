@@ -3,6 +3,7 @@
 #include "adc.h"
 #include "fet.h"
 #include "display.h"
+#include "debug.h"
 #include "keypad.h"
 #include "pressure.h"
 #include "temperature.h"

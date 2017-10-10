@@ -3,6 +3,7 @@
 */
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <stdio.h>
 
 #include "usart0.h"
 
@@ -83,6 +84,17 @@ static inline void _rxstart() {
 }
 static inline void _rxstop() {
 	UCSR0B &= ~(_BV(RXCIE0));	// Turn off RX complete interrupt
+}
+
+int usart0_putc(char c, FILE * f) {
+	(void) f;
+    while (!(UCSR0A & _BV(UDRE0)));
+    UDR0 = c;
+	return 0;
+}
+int usart0_getc(FILE * f) {
+	(void) f;
+	return 0;
 }
 
 // USART2 interrupt handlers
