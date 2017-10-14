@@ -65,10 +65,13 @@ int display_putchar(char c, FILE *unused) {
 			display_RC(row, 0);
 			break;
 		default:
-			col++;
-			if (col > 20) display_RC(++row, 0);
+			if (col >= DISPLAY_COLUMNS) {
+				display_RC(++row, 0);
+				col = 0;
+			}
 			hd44780_wait_ready(false);
 			hd44780_outdata(c);
+			col++;
 			break;
 	}
 	return 0;
@@ -76,8 +79,8 @@ int display_putchar(char c, FILE *unused) {
 
 void display_RC(unsigned char r, unsigned char c) {
 	unsigned char addr = 0;
-	if (c > 19) c = 0;
-	if (r > 3) r = 3;
+	//if (c > 19) c = 0;
+	//if (r > 3) r = 3;
 	if (r & 0x01) addr += 64;
 	if (r & 0x02) addr += 20;
 	addr += c;
