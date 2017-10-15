@@ -11,6 +11,10 @@
  * $Id: hd44780.h 2002 2009-06-25 20:21:16Z joerg_wunsch $
  */
 
+
+#include <stdbool.h>
+#include <stdint.h>
+
 /*
  * Send byte b to the LCD.  rs is the RS signal (register select), 0
  * selects instruction register, 1 selects the data register.
