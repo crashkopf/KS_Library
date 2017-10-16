@@ -33,6 +33,7 @@ BOARDOBJS = \
 	$(BUILDDIR)/dallas_one_wire.o \
 	$(BUILDDIR)/display.o \
 	$(BUILDDIR)/fet.o \
+	$(BUILDDIR)/graph.o \
 	$(BUILDDIR)/hd44780.o \
 	$(BUILDDIR)/keypad.o \
 	$(BUILDDIR)/kitchensink.o \

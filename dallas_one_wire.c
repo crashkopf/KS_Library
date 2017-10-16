@@ -148,6 +148,7 @@ uint8_t dallas_read(void) {
 		_delay_us(2);
 
 		// Configure as input.
+		DALLAS_PORT |= _BV(DALLAS_PIN);
 		DALLAS_DDR &= ~_BV(DALLAS_PIN);
 
 		// Wait for a bit.
@@ -185,7 +186,8 @@ uint8_t dallas_reset(void) {
 		// Wait the required time.
 		_delay_us(500); // 500 uS
 
-		// Switch to an input, enable the pin change interrupt, and wait.
+		// Switch to an input, enable pull-up, and wait.
+		DALLAS_PORT |= _BV(DALLAS_PIN);
 		DALLAS_DDR &= ~_BV(DALLAS_PIN);
 
 		_delay_us(70);

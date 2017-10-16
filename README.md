@@ -1,3 +1,6 @@
+KS_Library - Everything but the Kitchen Sink!
+=============================================
+
 ADC - Analog to digital conversion, channel multiplexing.
 Debug
 Display - High-level display interface
@@ -13,13 +16,60 @@ USART1
 USART2
 USART3
 
-Example:
+Code Example
+-------------
+	#include "kitchensink.h"
 
-#include "kitchensink.h"
+	void main() {
+		// Initialize Kitchen Sink hardware
+		KS_init();
 
-void main() {
-	// Initialize Kitchen Sink hardware
-	KS_init();
+		// Main program loop...
+		display("Peace among worlds!\n");
+	}
 
-	// Main program loop...
-}
+Makefile Example
+----------------
+	###############################################################################
+	# Makefile for the project AVR
+	###############################################################################
+
+	PROJECT=mayhem
+
+	all: $(PROJECT).hex
+
+	BOARDDIR = path/to/KS_Library
+	include $(BOARDDIR)/profile.mk
+
+	OBJECTS = \
+		$(BOARDOBJS) \
+		build/Main.o \
+		build/trigint_conversions.o \
+		build/trigint_sin16.o \
+		build/trigint_sin8.o \
+
+	## Main build section
+	.PHONY: clean upload documentation
+
+	board: $(BOARDOBJS)
+
+	build/%.o: src/%.c
+		@mkdir -p $(@D)
+		$(AVR-CC) $(AVR-CFLAGS) $(addprefix -I,  $(BOARDDIR) src tmp) -c -o $@ $<
+
+	$(PROJECT).elf: $(OBJECTS)
+		$(AVR-CC) $(AVR-COMMON) -o $@ $^ $(AVR-LDFLAGS)
+
+	%.hex: %.elf
+		avr-objcopy -O ihex $< $@
+
+	upload: $(PROJECT).hex
+		avrdude -p m1280 -P /dev/ttyUSB0 -c arduino -b 57600 -F -u -U flash:w:$<
+
+	documentation:
+		doxygen documentation/Doxyfile
+
+	## Clean target
+	clean:
+		-rm -rf build tmp
+		-rm -f *.elf *.hex

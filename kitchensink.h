@@ -1,9 +1,10 @@
 #include <avr/io.h>
 
 #include "adc.h"
-#include "fet.h"
-#include "display.h"
 #include "debug.h"
+#include "display.h"
+#include "fet.h"
+#include "graph.h"
 #include "keypad.h"
 #include "pressure.h"
 #include "temperature.h"
