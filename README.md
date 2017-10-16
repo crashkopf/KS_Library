@@ -1,20 +1,21 @@
 KS_Library - Everything but the Kitchen Sink!
 =============================================
 
-ADC - Analog to digital conversion, channel multiplexing.
-Debug
-Display - High-level display interface
-FET
-HD44780 - Low-level commands to the display driver
-Keypad - Scan 4x4 keypad.  Key debouncing and event queue.
-Pressure - Conversion from ADC value to pressure.
-Temperature - Conversion from ADC value to temperature.  Cold-point compensation.
-Timer0 - System clock
-Timer1 - Servo0, Servo1, Servo2
-USART0 - USB Serial (57600, N-8-1)
-USART1
-USART2
-USART3
+  * ADC - Analog to digital conversion, channel multiplexing.
+  * Debug - Messages to USB serial
+  * Display - High-level display interface
+  * FET - FET sink outputs
+  * Graphs - Graph tiny data with the HD44780
+  * HD44780 - Low-level commands to the display driver
+  * Keypad - Scan 4x4 keypad.  Key debouncing and event queue.
+  * Pressure - Conversion from ADC value to pressure.
+  * Temperature - Conversion from ADC value to temperature.  Cold-point compensation.
+  * Timer0 - System clock
+  * Timer1 - Servo0, Servo1, Servo2
+  * USART0 - USB Serial (57600, N-8-1)
+  * USART1
+  * USART2
+  * USART3
 
 Code Example
 -------------
@@ -44,9 +45,6 @@ Makefile Example
 	OBJECTS = \
 		$(BOARDOBJS) \
 		build/Main.o \
-		build/trigint_conversions.o \
-		build/trigint_sin16.o \
-		build/trigint_sin8.o \
 
 	## Main build section
 	.PHONY: clean upload documentation
