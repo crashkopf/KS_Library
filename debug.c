@@ -4,10 +4,10 @@
 
 #include "debug.h"
 
-#ifndef NODEBUG
+#ifndef KSLIB_NODEBUG
 
 #include "usart0.h"
 
 FILE debug = FDEV_SETUP_STREAM(usart0_putc, usart0_getc, _FDEV_SETUP_RW);
 
-#endif /* NODEBUG */
+#endif /* KSLIB_NODEBUG */
